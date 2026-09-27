@@ -2,10 +2,63 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>粮情哨兵智能体</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>粮情哨兵智能体 · Grain Sentinel</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌾</text></svg>">
 </head>
-<body style="font-family: sans-serif; padding: 40px; text-align: center; color: #333;">
-  <h1>🌾 粮情哨兵智能体</h1>
-  <p>后端服务已就绪，前端界面开发中…</p>
+<body>
+  <div class="app">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="logo">🌾</span>
+        <div>
+          <div class="brand-name">粮情哨兵智能体</div>
+          <div class="brand-sub">Grain Sentinel Agent</div>
+        </div>
+      </div>
+      <button class="new-chat" id="newChat">＋ 新建对话</button>
+
+      <div class="sidebar-scroll">
+        <div class="section-title">会话历史</div>
+        <div id="historyList"></div>
+
+        <div class="section-title">智能体团队</div>
+        <div id="agentsList"><div class="history-empty">加载中…</div></div>
+
+        <div class="section-title">粮情监测概览</div>
+        <select class="region-select" id="warehouseSelect">
+          <option value="直属库A">直属库A · 平房仓（小麦）</option>
+          <option value="直属库B">直属库B · 浅圆仓（稻谷）</option>
+          <option value="储备库C">储备库C · 立筒仓（玉米）</option>
+        </select>
+        <div class="status-badge" id="statusBadge"></div>
+        <div class="kpi-row" id="kpiRow"></div>
+        <div id="grainChart" class="energy-chart"></div>
+      </div>
+    </aside>
+
+    <!-- 主区 -->
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-title" id="topbarTitle">新对话</div>
+        <div class="topbar-status" id="topbarStatus"><span class="dot" id="statusDot"></span><span id="statusText">检测中…</span></div>
+      </header>
+
+      <div class="messages" id="messages"></div>
+
+      <div class="composer-wrap">
+        <div class="composer">
+          <textarea id="input" rows="1" placeholder="向粮情哨兵提问，例如：帮我评估储备库C的粮情安全风险"></textarea>
+          <button id="send" title="发送">➤</button>
+        </div>
+        <div class="composer-hint">Enter 发送 · Shift+Enter 换行</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+  <script src="/static/app.js"></script>
 </body>
 </html>
