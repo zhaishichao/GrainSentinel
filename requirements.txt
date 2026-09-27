@@ -1,0 +1,9 @@
+# Web 服务与流式接口
+fastapi>=0.110
+uvicorn[standard]>=0.29
+
+# 大模型接入（OpenAI 兼容协议，一套代码对接 DeepSeek / Qwen / GLM / OpenAI）
+openai>=1.40
+
+# 环境变量加载
+python-dotenv>=1.0
